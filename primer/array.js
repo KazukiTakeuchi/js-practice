@@ -17,3 +17,40 @@ const array = [];
 console.log(Array.isArray(obj)); // => false
 console.log(Array.isArray(array)); // => true
 
+
+//分割代入可能
+const numbers = ["one", "two", "three"];
+const [first, second, third] = numbers;
+console.log(first);
+console.log(third)
+
+//配列の指定したインデックスに要素自体が存在するか確かめる　hasOwnPropertyメソッド
+const denseArray = [1, undefined, 3];
+const sparseArray = [1, , 3];
+console.log(denseArray.hasOwnProperty(1)); //存在するのでtrue
+console.log(sparseArray.hasOwnProperty(1)); //false
+
+
+//配列から要素を検索する
+const languages = ["Java", "JavaScript", "Ruby"];
+const indexOfJS = languages.indexOf("JavaScript");
+console.log(indexOfJS);
+console.log(languages[indexOfJS]);
+console.log(languages.indexOf("JS")); //存在しないため-1
+
+
+
+// colorプロパティを持つオブジェクトの配列
+const colors = [
+  { "color": "red" },
+  { "color": "green" },
+  { "color": "blue" }
+];
+// `color`プロパティが"blue"のオブジェクトのインデックスを取得
+const indexOfBlue = colors.findIndex((obj) => {
+  return obj.color === "blue";
+});
+console.log(indexOfBlue); // => 2
+console.log(colors[indexOfBlue]); // => { "color": "blue" }
+
+
