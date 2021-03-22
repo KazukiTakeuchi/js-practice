@@ -21,6 +21,13 @@
     <p>X:{{ x }} , Y:{{ y }}</p>
     <p>{{ sayHi() }}</p>
     <h1 :style="styleObject">Hello</h1>
+
+    <ul>
+      <li v-for="(fruit, index) in fruits">{{ index }}-{{ fruit }}</li>
+    </ul>
+    <ul>
+      <li v-for="value in object">{{ value }}</li>
+    </ul>
   </div>
 
 
@@ -41,6 +48,12 @@
         styleObject:{
           color:'red',
           'background-color':'blue'
+        },
+        fruits:['apple', 'banana', 'purple'],
+        object:{
+          firstNama:'Taro',
+          lastName:'Tanaka',
+          age:21,
         }
       },
 
