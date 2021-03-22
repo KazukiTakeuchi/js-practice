@@ -9,23 +9,71 @@
 <body>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
+
+
   <div id="app">
-    <p>{{message}}</p>
-    <button v-on:click="reverseMessage">メッセージ反転</button>
+    <h1 :class="classObject">Hello</h1>
+    <button @click="isActive = !isActive">切り替え</button>
+    <p v-once>{{message}}</p>
+    <p>{{ number }}クリックされました</p>
+    <button v-on:click="countUp">カウントアップ</button>
+    <p v-on:mouseMove="changeMousePosition">マウスをのせて〜〜</p>
+    <p>X:{{ x }} , Y:{{ y }}</p>
+    <p>{{ sayHi() }}</p>
+    <h1 :style="styleObject">Hello</h1>
   </div>
+
+
 
   <script>
   new Vue({
       el: '#app',
       data: {
-        message: 'HelloWorld!!!!!'
+        message: 'HelloWorld!!!!!',
+        number: 0,
+        x:0,
+        y:0,
+        isActive:true,
+        color:'red',
+        bg:'bg-blue',
+        textColor:'red',
+        bgColor:'blue',
+        styleObject:{
+          color:'red',
+          'background-color':'blue'
+        }
       },
+
+      computed:{
+        classObject: function(){
+          return { red: this.isActive, 'bg-blue': !this.isActive }
+        }
+      },
+
       methods: {
-        reverseMessage: function () {
-          this.message = this.message.split('').reverse().join('')
+        sayHi: function () {
+          this.message = "Hello Vue.js";
+          return 'Hi';
+        },
+        countUp: function(){
+          this.number += 1
+        },
+        changeMousePosition: function(event){
+          this.x = event.clientX;
+          this.y = event.clientY;
         }
       }
     })
   </script>
 </body>
 </html>
+
+<style>
+.red{
+  color: red;
+}
+
+.bg-blue{
+  background-color: blue;
+}
+</style>
